@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import toast from "react-hot-toast"
 
 export default function LoginFromPage() {
     const router = useRouter()
@@ -15,8 +16,10 @@ export default function LoginFromPage() {
             if (res.ok) {
                 router.push('/')
                 from.reset()
-            }else{
-                alert('Authintication failed');
+                toast.success('Login success')
+            } else {
+                // alert('Authintication failed');
+                toast.error('Authentication failed')
             }
             // callbackUrl: "/"
         } catch (error) {
