@@ -15,6 +15,7 @@ export default function MyBookingTable({ data }) {
                         <th>Service Name</th>
                         <th>Service Date</th>
                         <th>Service Price</th>
+                        <th>Adress</th>
                         <th>Actions</th>
                         <th>Actions</th>
                     </tr>
@@ -24,11 +25,17 @@ export default function MyBookingTable({ data }) {
                         return (
                             <tr key={item._id}>
                                 <td>
-                                    <Image src={item.service_img} alt={item.service_name} width={50} height={50} />
+                                    <Image 
+                                    src={item.service_img} 
+                                    alt={item.service_name} 
+                                    width={50} 
+                                    height={50}
+                                    className='rounded-full' />
                                 </td>
                                 <td>{item.service_name}</td>
                                 <td>{item.date}</td>
                                 <td>{item.service_price}</td>
+                                <td>{item.address}</td>
                                 <td>
                                     <Link href={`/my-booking/${item._id}`}>
                                         <FaEdit className='text-2xl text-blue-800 cursor-pointer' />
