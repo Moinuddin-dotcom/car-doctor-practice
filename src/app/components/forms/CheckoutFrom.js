@@ -29,7 +29,7 @@ export default function CheckoutFrom({ data }) {
         }
         console.log(bookingPayload)
 
-        const res = await fetch('http://localhost:3000/api/service', {
+        const res = await fetch('https://car-doctor-practice.vercel.app/api/service', {
             method: 'POST',
             // headers: {
             //     'Content-Type': 'application/json'
