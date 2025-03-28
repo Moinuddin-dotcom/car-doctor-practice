@@ -1,6 +1,7 @@
+import DeleteBottom from '@/app/my-booking/components/DeleteBottom'
 import Image from 'next/image'
 import React from 'react'
-import { FaEdit, FaTrash } from 'react-icons/fa'
+import { FaEdit } from 'react-icons/fa'
 
 export default function MyBookingTable({ data }) {
     return (
@@ -31,7 +32,7 @@ export default function MyBookingTable({ data }) {
                                     <FaEdit className='text-2xl text-blue-800 cursor-pointer' />
                                 </td>
                                 <td>
-                                    <FaTrash className='text-2xl text-red-800 cursor-pointer' />
+                                    <DeleteBottom id={item._id} />
                                 </td>
                             </tr>
                         )
