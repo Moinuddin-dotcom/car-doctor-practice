@@ -1,8 +1,12 @@
+"use client"
+import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 export default function Navbar() {
+    const { data: session, status } = useSession()
+    console.log(session)
     const navMenu = () => {
         return (
             <>
@@ -10,7 +14,7 @@ export default function Navbar() {
                 <li><Link href={'/about'}>About</Link></li>
                 <li><Link href={'/services'}>Services</Link></li>
                 <li><Link href={'/blogs'}>Blogs</Link></li>
-                <li><Link href={'/contact'}>Contact</Link></li>
+                <li><Link href={'/my-booking'}>My Bookings</Link></li>
             </>
         )
     }
@@ -38,8 +42,22 @@ export default function Navbar() {
                 </ul>
             </div>
             <div className="navbar-end space-x-2.5">
-                <Link href={'/login'} className="btn btn-outline">Login</Link>
-                <Link href={'/register'} className="btn btn-outline">Register</Link>
+                {status === "authenticated" ? (<>
+                    <div>
+                        <Image
+                            src={session?.user?.image}
+                            width={30}
+                            height={30}
+                            alt='profile image'
+                            className='rounded-full' />
+                    </div>
+                    <button onClick={() => signOut()} className="btn">Log Out</button>
+                </>) : (
+                    <>
+                        <Link href={'/login'} className="btn btn-outline">Login</Link>
+                        <Link href={'/register'} className="btn btn-outline">Register</Link></>
+                )}
+
                 <a className="btn btn-outline">Appionment</a>
             </div>
         </div>

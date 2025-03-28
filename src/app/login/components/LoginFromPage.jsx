@@ -3,6 +3,7 @@
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
+import SocialLogin from "./SocialLogin"
 
 export default function LoginFromPage() {
     const router = useRouter()
@@ -39,6 +40,9 @@ export default function LoginFromPage() {
                 <button className="btn " type="submit">Log in</button>
                 {/* <a href="/register">Register</a> */}
             </form>
+            <div>OR</div>
+            {/* social login */}
+            <SocialLogin />
         </div>
     )
 }

@@ -1,6 +1,7 @@
 "use client"
 
 import { registerUser } from "@/app/actions/auth/registerUser";
+import SocialLogin from "@/app/login/components/SocialLogin";
 
 export default function RegisterFromPage() {
   const handleRegister = async (e) => {
@@ -27,6 +28,9 @@ export default function RegisterFromPage() {
         <button className="btn " type="submit">Register</button>
         {/* <a href="/register">Register</a> */}
       </form>
+      <div>OR</div>
+      {/* social Register */}
+      <SocialLogin />
     </div>
   )
 }

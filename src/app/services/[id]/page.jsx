@@ -1,18 +1,18 @@
-import dbConnect, { collectionNameObj } from '@/lib/dbConnect'
-import { ObjectId } from 'mongodb'
+
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export default async function ServiceDetailsPage({ params }) {
     const p = await params
-
-    const serviceCollection = dbConnect(collectionNameObj.serviceCollection)
-    const data = await serviceCollection.findOne({ _id: new ObjectId(p.id) })
+    const res = await fetch(`http://localhost:3000/api/service/${p.id}`)
+    const data = await res.json()
     return (
         <div>
             <section className='flex justify-center'>
                 <figure className=' relative'>
-                    <Image src={"/assets/images/checkout/checkout.png"}
+                    <Image
+                        src={"/assets/images/checkout/checkout.png"}
                         width={1140}
                         height={300}
                         alt='banner' />
@@ -23,13 +23,16 @@ export default async function ServiceDetailsPage({ params }) {
                     </div>
                 </figure>
             </section>
-            <section>
+            <section className='mb-20'>
                 <div className='flex justify-center'>
                     <Image src={data.img} alt={data.title} width={500} height={400} />
                 </div>
                 <div className='flex flex-col justify-center items-center'>
                     <h1>{data.title}</h1>
                     <p>{data.description}</p>
+                    <Link href={`/checkout/${data._id}`}>
+                        <button className='btn btn-wide bg-amber-400 px-5 py-1'>Checkout</button>
+                    </Link>
                     <h2>Price: {data.price}$</h2>
                 </div>
             </section>
