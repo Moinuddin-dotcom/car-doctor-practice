@@ -1,5 +1,6 @@
 import DeleteBottom from '@/app/my-booking/components/DeleteBottom'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import { FaEdit } from 'react-icons/fa'
 
@@ -29,7 +30,9 @@ export default function MyBookingTable({ data }) {
                                 <td>{item.date}</td>
                                 <td>{item.service_price}</td>
                                 <td>
-                                    <FaEdit className='text-2xl text-blue-800 cursor-pointer' />
+                                    <Link href={`/my-booking/${item._id}`}>
+                                        <FaEdit className='text-2xl text-blue-800 cursor-pointer' />
+                                    </Link>
                                 </td>
                                 <td>
                                     <DeleteBottom id={item._id} />
