@@ -36,7 +36,7 @@ export default function BookingUpdateFrom({ data }) {
         }
         console.log(bookingPayload)
 
-        const res = await fetch(`http://localhost:3000/api/my-booking/${data._id}`, {
+        const res = await fetch(`https://car-doctor-practice.vercel.app/api/my-booking/${data._id}`, {
             method: 'PATCH',
             // headers: {
             //     'Content-Type': 'application/json'

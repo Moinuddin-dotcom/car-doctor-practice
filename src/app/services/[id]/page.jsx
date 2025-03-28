@@ -5,7 +5,7 @@ import React from 'react'
 
 export default async function ServiceDetailsPage({ params }) {
     const p = await params
-    const res = await fetch(`http://localhost:3000/api/service/${p.id}`)
+    const res = await fetch(`https://car-doctor-practice.vercel.app/api/service/${p.id}`)
     const data = await res.json()
     return (
         <div>
